@@ -26,9 +26,9 @@ public class BaseDeDados {
                 List<Produto> listaProdutos = Arrays.asList(produto1, produto2, produto3, produto4, produto5, produto6);
 
                 //Criar Pedidos:
-                Pedido pedido1 = new Pedido(20000L, LocalDate.of(2023, 12, 15), Arrays.asList(produto1, produto2), cliente1);
+                Pedido pedido1 = new Pedido(20000L, LocalDate.of(2023, 4, 12), Arrays.asList(produto1, produto2), cliente1);
                 Pedido pedido2 = new Pedido(20001L, LocalDate.now(), Arrays.asList(produto3, produto4), cliente2);
-                Pedido pedido3 = new Pedido(20002L, LocalDate.of(2022, 8, 23), Arrays.asList(produto5, produto6), cliente3);
+                Pedido pedido3 = new Pedido(20002L, LocalDate.of(2022, 4, 11), Arrays.asList(produto5, produto6), cliente3);
                 List<Pedido> listaPedidos = Arrays.asList(pedido1,pedido2,pedido3);
 
                 //Filtrar Produtos e Mostrar com preço menor que 100.00:
@@ -48,6 +48,7 @@ public class BaseDeDados {
                 System.out.println("Produtos por Categoria: \n" + streamProdutosPorCategoria.collect(Collectors.toList()));
 
                 //Ordenar Pedidos por Mais Recentes:
-                
+                Stream<Pedido> streamPedidoMaisRecente = listaPedidos.stream().sorted(Comparator.comparing(Pedido::getLocalDate).reversed());
+                System.out.println("Produtos mais Recentes: \n" + streamPedidoMaisRecente.collect(Collectors.toList()));
         }
 }
